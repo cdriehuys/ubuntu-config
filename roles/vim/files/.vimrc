@@ -1,8 +1,20 @@
-" Enable pathogen.vim
-execute pathogen#infect()
+" Run as iMproved
+set nocompatible
 
-" Basic filetype-specific behavior
-syntax on
+" Required for Vundle
+filetype off
+
+" Include Vundle in runtime path and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Let Vundle manage itself (required)
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-fugitive'
+
+call vundle#end()
+
 filetype plugin indent on
 
 " More natural split behavior

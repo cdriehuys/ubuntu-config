@@ -9,26 +9,10 @@
    path: "{{ vim_config_root }}/.vim"
    state: directory
 
-- name: pathogen.vim | Create autoload directory to install pathogen.vim in
-  file:
-    path: "{{ vim_config_root }}/.vim/autoload"
-    state: directory
-
-- name: pathogen.vim | Install
-  get_url:
-    dest: "{{ vim_config_root }}/.vim/autoload/pathogen.vim"
-    mode: 0644
-    url: 'https://tpo.pe/pathogen.vim'
-
-- name: fugitive.vim | Clone repository
+- name: Vundle | Clone repository
   git:
-    dest: "{{ vim_config_root }}/.vim/bundle/vim-fugitive"
-    repo: 'https://github.com/tpope/vim-fugitive.git'
-
-- name: fugitive.vim | Install helptags
-  command: "vim -u NONE -c 'helptags {{ vim_config_root }}/.vim/bundle/vim-fugitive/doc' -c q"
-  register: fugitive_helptags
-  changed_when: 'fugitive_helptags.stdout != ""'
+    dest: "{{ vim_config_root }}/.vim/bundle/Vundle.vim"
+    repo: 'https://github.com/VundleVim/Vundle.vim.git'
 
 - name: Upload vim configuration
   copy:
