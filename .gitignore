@@ -1,0 +1,2 @@
+# Failed Ansible runs
+*.retry

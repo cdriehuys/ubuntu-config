@@ -11,6 +11,7 @@ call vundle#begin()
 " Let Vundle manage itself (required)
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
@@ -27,3 +28,6 @@ set shiftwidth=4
 
 " Insert spaces when pressing <TAB>
 set expandtab
+
+" Show line numbers by default
+set number

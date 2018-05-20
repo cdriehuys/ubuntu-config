@@ -14,7 +14,21 @@
     dest: "{{ vim_config_root }}/.vim/bundle/Vundle.vim"
     repo: 'https://github.com/VundleVim/Vundle.vim.git'
 
+- name: YouCompleteMe | Install dependencies
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - build-essential
+    - cmake
+
 - name: Upload vim configuration
   copy:
     dest: "{{ vim_config_root }}/.vimrc"
     src: .vimrc
+
+- name: Install plugins
+  command: vim +PluginInstall +qall
+
+- name: YouCompleteMe | Complete install
+  command: "{{ vim_config_root }}/.vim/bundle/YouCompleteMe/install.py"
