@@ -1,0 +1,6 @@
+---
+- name: Configure Ubuntu machine
+  hosts: localhost
+  
+  roles:
+    - vim
