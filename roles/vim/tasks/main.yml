@@ -27,6 +27,11 @@
     dest: "{{ vim_config_root }}/.vimrc"
     src: .vimrc
 
+- name: Upload syntax specific configuration
+  copy:
+    dest: "{{ vim_config_root }}/.vim/ftplugin"
+    src: ftplugin
+
 - name: Install plugins
   command: vim +PluginInstall +qall
 
