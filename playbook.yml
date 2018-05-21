@@ -1,6 +1,14 @@
 ---
 - name: Configure Ubuntu machine
   hosts: localhost
+
+  pre_tasks:
+    # Update apt package list so other roles don't have to worry about doing it
+    # as a first step.
+    - name: Update apt package list
+      become: true
+      apt:
+        update_cache: true
   
   roles:
     - vim
