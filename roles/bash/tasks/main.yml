@@ -1,0 +1,12 @@
+---
+- name: Create directory for additional bash settings
+  file:
+    mode: 0755
+    path: "{{ '~/.bashrc.d' | expanduser }}"
+    state: directory
+
+- name: Upload .bashrc
+  copy:
+    dest: "{{ '~/.bashrc' | expanduser }}"
+    mode: 0644
+    src: .bashrc

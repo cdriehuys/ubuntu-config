@@ -5,6 +5,12 @@
     name: vim
     state: latest
 
+- name: Upload bash configurations for VIM
+  copy:
+    dest: "{{ '~/.bashrc.d/vim.sh' | expanduser }}"
+    mode: 0644
+    src: "vim.sh"
+
 - name: Create .vim config directory
   file:
    path: "{{ vim_config_root }}/.vim"
