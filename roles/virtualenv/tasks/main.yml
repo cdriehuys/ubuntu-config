@@ -1,0 +1,31 @@
+---
+- name: Install pip
+  become: yes
+  apt:
+    name: "{{ item }}" 
+    state: latest
+  with_items:
+    - python-pip
+    - python3-pip
+
+- name: Install virtualenvwrapper
+  pip:
+    extra_args: --user
+    name: virtualenvwrapper
+
+- name: Create directory to hold virtual environments
+  file:
+    mode: 0755
+    path: "{{ '~/.virtualenvs' | expanduser }}"
+    state: directory
+
+- name: Create directory to hold python projects
+  file:
+    mode: 0755
+    path: "{{ '~/programs/python' | expanduser }}"
+    state: directory
+
+- name: Upload bash configuration
+  copy:
+    dest: "{{ '~/.bashrc.d/virtualenv.sh' }}"
+    src: virtualenv.sh
