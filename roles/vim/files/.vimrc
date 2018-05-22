@@ -49,3 +49,17 @@ let g:ctrlp_show_hidden = 1
 
 " YouCompleteMe Options
 let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" Prompt to autocreate missing directories.
+" Useful for :open does/not/exist/file.txt and then saving.
+augroup vimrc-auto-mkdir
+    autocmd!
+    autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
+    function! s:auto_mkdir(dir, force)
+        if !isdirectory(a:dir)
+                    \   && (a:force
+                    \       || input("'" . a:dir . "' does not exist. Create? [y/N]") =~? '^y\%[es]$')
+            call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+        endif
+    endfunction
+augroup END
