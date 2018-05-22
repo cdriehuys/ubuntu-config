@@ -2,6 +2,8 @@
 
 An Ansible playbook to configure my development environment.
 
+**Warning: This playbook will clobber your dotfiles. Make a backup before running it.**
+
 # Prerequisites
 
 In order to run the playbook, Ansible must be installed. The easiest way to do this is install Ansible from its PPA.
