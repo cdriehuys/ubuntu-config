@@ -30,7 +30,7 @@
 
 - name: Upload syntax specific configuration
   copy:
-    dest: "{{ vim_config_root }}/.vim/ftplugin"
+    dest: "{{ vim_config_root }}/.vim/"
     src: ftplugin
 
 - name: Install plugins
