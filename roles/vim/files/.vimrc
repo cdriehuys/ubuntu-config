@@ -46,3 +46,6 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 
 " Search hidden files with ctrlp
 let g:ctrlp_show_hidden = 1
+
+" YouCompleteMe Options
+let g:ycm_autoclose_preview_window_after_insertion = 1
